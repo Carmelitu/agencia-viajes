@@ -1,0 +1,17 @@
+{
+  "name": "agencia-de-viajes",
+  "version": "1.0.0",
+  "description": "Primer Proyecto con Node.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Lucas Seijo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
