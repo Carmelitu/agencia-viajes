@@ -29,15 +29,11 @@ app.use( (req, res, next) => {
 // Agregar bodyparser para leer formulario
 app.use(express.urlencoded({extended: true}));
 
-
 // Definir carpeta publica
 app.use(express.static('public'));
 
 // Agregar Router
 app.use('/', router);
-
-
-
 
 app.listen(port, () => {
     console.log(`Servidor Funcionando en el puerto ${port}`);
