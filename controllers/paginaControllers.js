@@ -1,11 +1,27 @@
 import { Viaje } from '../models/Viaje.js';
 import {Testimonial} from "../models/Testimoniales.js";
 
-const paginaInicio = (req, res) => { // req - lo que enviamos --- res - lo que responde
-    res.render('inicio', {
-        pagina: 'Inicio',
-        clase: 'home'
-    });
+const paginaInicio = async (req, res) => { // req - lo que enviamos --- res - lo que responde
+
+
+    // Consultar 3 Viajes y Testimonios
+    const promiseDB = [];
+
+    promiseDB.push(Viaje.findAll({limit: 3}));
+    promiseDB.push(Testimonial.findAll({limit: 3}))
+
+    try {
+        const resultado = await Promise.all( promiseDB );
+
+        res.render('inicio', {
+            pagina: 'Inicio',
+            clase: 'home',
+            viajes: resultado[0],
+            testimoniales: resultado[1]
+        });
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 const paginaNosotros = (req, res) => {
